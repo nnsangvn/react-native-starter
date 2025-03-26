@@ -4,13 +4,24 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello World!!!</Text>
-      <StatusBar style="auto" />
+      <View>
+        <Text style={styles.text} >Test</Text>
+      </View>
+      <Text>Hello
+        <Text style={styles.worldtext}> World!!!</Text>
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  worldtext: {
+    color: "blue",
+  },
+  text: {
+    fontSize: 30,
+    color: "red",
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
