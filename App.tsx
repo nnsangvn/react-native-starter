@@ -6,6 +6,24 @@ export default function App() {
   // string
   const [name, setName] = useState<string>("");
 
+  const [todoList, setTodoList] = useState([
+    { id: 1, title: "Learn React Native" },
+    { id: 2, title: "Learn React.js" },
+    { id: 3, title: "Watching Netflix" },
+    { id: 4, title: "Playing ESport" },
+    { id: 5, title: "Subscribe Hỏi Dân IT :v" },
+    { id: 6, title: "Watching Youtube" },
+    { id: 7, title: "CR 7" },
+    { id: 8, title: "Tony Kroos" },
+    { id: 9, title: "Nine" },
+    { id: 10, title: "M10" },
+    { id: 10, title: "M10" },
+    { id: 10, title: "M10" },
+    { id: 10, title: "M10" },
+    { id: 10, title: "M10" },
+    { id: 10, title: "M10" },
+  ])
+
   return (
     <View style={styles.container}>
       <View>
@@ -26,15 +44,28 @@ export default function App() {
         <Text style={styles.text} >{name}</Text>
       </View>
 
-      <Button title='Add new' />
-      <Text>Hello
-        <Text style={styles.worldtext}> World!!!</Text>
-      </Text>
+      <Button
+        title='Add new'
+        onPress={() => alert('tap me')}
+      />
+      <View style={{ marginTop: 20, borderColor: 'red', borderWidth: 1 }}>
+        {todoList.map(todo => {
+          return (
+            <Text style={styles.todo}>{todo.title}</Text>
+          )
+        })}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  todo: {
+    fontSize: 20,
+    backgroundColor: "pink",
+    marginBottom: 20,
+    padding: 10,
+  },
   worldtext: {
     color: "blue",
   },
