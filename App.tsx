@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   // string
@@ -17,15 +17,15 @@ export default function App() {
     { id: 8, title: "Tony Kroos" },
     { id: 9, title: "Nine" },
     { id: 10, title: "M10" },
-    { id: 10, title: "M10" },
-    { id: 10, title: "M10" },
-    { id: 10, title: "M10" },
-    { id: 10, title: "M10" },
-    { id: 10, title: "M10" },
+    { id: 11, title: "M11" },
+    { id: 12, title: "M12" },
+    { id: 13, title: "M13" },
+    { id: 14, title: "M14" },
+    { id: 15, title: "M15" },
   ])
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View>
         <TextInput
           onChangeText={t => setName(t)}
@@ -51,11 +51,11 @@ export default function App() {
       <View style={{ marginTop: 20, borderColor: 'red', borderWidth: 1 }}>
         {todoList.map(todo => {
           return (
-            <Text style={styles.todo}>{todo.title}</Text>
+            <Text key={todo.id} style={styles.todo}>{todo.title}</Text>
           )
         })}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
