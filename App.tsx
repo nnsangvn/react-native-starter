@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   // string
@@ -25,7 +25,7 @@ export default function App() {
   ])
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View>
         <TextInput
           onChangeText={t => setName(t)}
@@ -48,14 +48,32 @@ export default function App() {
         title='Add new'
         onPress={() => alert('tap me')}
       />
-      <View style={{ marginTop: 20, borderColor: 'red', borderWidth: 1 }}>
+      <FlatList
+        style={{ marginTop: 20, borderColor: 'red', borderWidth: 1 }}
+        data={todoList}
+        // keyExtractor set key for child
+        // keyExtractor trả về string, sử dụng + "" để convert item.id từ number -> string
+        keyExtractor={item => item.id + ""}
+        // object destructuring: data.item = {item}
+        renderItem={({ item }) => {
+          return (
+            <Text
+              // key={item.id}
+              style={styles.todo}
+            >
+              {item.title}
+            </Text>
+          )
+        }}
+      />
+      {/* <ScrollView style={{ marginTop: 20, borderColor: 'red', borderWidth: 1 }}>
         {todoList.map(todo => {
           return (
             <Text key={todo.id} style={styles.todo}>{todo.title}</Text>
           )
         })}
-      </View>
-    </ScrollView>
+      </ScrollView> */}
+    </View>
   );
 }
 
