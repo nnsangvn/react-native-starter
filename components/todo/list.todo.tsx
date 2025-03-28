@@ -18,7 +18,6 @@ const ListTodo = (props: IProps) => {
     const { todoList, deleteTodo } = props;
     return (
         <>
-            <Text>{JSON.stringify(todoList)}</Text>
             <FlatList
                 style={{ marginTop: 20, borderColor: 'red', borderWidth: 1 }}
                 data={todoList}
