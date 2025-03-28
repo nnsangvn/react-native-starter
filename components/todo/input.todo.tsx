@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, StyleSheet, TextInput, View } from "react-native";
+import { Alert, Button, StyleSheet, TextInput, View } from "react-native";
 
 const styles = StyleSheet.create(
     {
@@ -22,7 +22,28 @@ const InputTodo = (props: IProps) => {
     const [name, setName] = useState<string>("");
 
     const handleAddNewTodo = () => {
-        addTodo(name)
+        // validate todo
+        if (!name) {
+            // alert("name is empty")
+            Alert.alert(
+                "Thông báo",
+                "Nội dung không được để trống",
+                [
+                    {
+                        text: 'Cancel',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ],)
+
+            // return để thoát hàm, không chạy addTodo và setName
+            return
+        }
+        // add todo
+        addTodo(name);
+        // set input = empty
+        setName("");
     }
 
     return (
