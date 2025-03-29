@@ -3,9 +3,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
+import 'react-native-gesture-handler';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 function App() {
   const Stack = createNativeStackNavigator();
+  const Drawer = createDrawerNavigator();
 
   function HomeScreen(props: any) {
 
@@ -51,10 +54,43 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
+      {/* <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={({ route }: { route: any }) => ({ headerTitle: `Xem chi tiết ${route?.params?.userId ?? ""}` })} />
+      </Stack.Navigator> */}
+      <Drawer.Navigator initialRouteName="Feed">
+
+        <Drawer.Screen
+          name="Feed"
+          component={HomeScreen}
+          options={{
+            drawerLabel: "Trang chủ",
+            headerTitle: "Trang chủ"
+          }}
+        />
+        <Drawer.Screen
+          name="Article"
+          component={DetailsScreen}
+
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
