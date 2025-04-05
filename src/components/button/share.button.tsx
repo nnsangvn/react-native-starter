@@ -1,13 +1,11 @@
 import { Pressable, StyleProp, StyleSheet, Text, TextStyle, View } from "react-native";
-import { APP_COLOR } from "../../utils/constant";
 import { ReactNode } from "react";
+import { APP_COLOR } from "@/utils/constant";
 
 
 const styles = StyleSheet.create(
     {
-        btnContaier: {
-            borderColor: "",
-            borderWidth: 1,
+        btnContaier: { 
             borderRadius: 10,
             paddingHorizontal: 15,
             paddingVertical: 10,
@@ -17,9 +15,6 @@ const styles = StyleSheet.create(
             // alignSelf: 'flex-start',
             backgroundColor: APP_COLOR.ORANGE,
         },
-        style: {
-            textTransform: "uppercase"
-        }
     }
 )
 

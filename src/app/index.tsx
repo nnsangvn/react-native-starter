@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native"
-import ShareButton from "../components/button/share.button";
-import { APP_COLOR } from "../utils/constant";
-import AntDesign from '@expo/vector-icons/AntDesign';
+import ShareButton from "components/button/share.button";
+import { APP_COLOR } from "utils/constant";
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 
 const styles = StyleSheet.create(
@@ -10,7 +10,6 @@ const styles = StyleSheet.create(
             flex: 1,
             borderColor: "red",
             borderWidth: 5,
-
         },
         welcomeText: {
             flex: 0.6,
@@ -23,6 +22,7 @@ const styles = StyleSheet.create(
             flex: 0.4,
             borderColor: "grey",
             borderWidth: 5,
+            gap: 20
         },
         heading: {
             fontSize: 40,
@@ -69,41 +69,79 @@ const WelcomePage = () => {
             </View>
 
             <View style={styles.welcomeBtn}>
-                <Text>
-                    Đăng nhập với
-                </Text>
-                <View>
+                <View style={{
+                    borderBottomWidth: 1,
+                    borderBottomColor: "red",
+                    marginHorizontal: 50
+                }}>
+                    <Text style={{
+                        padding: 10,
+                        textAlign: "center",
+                        backgroundColor: "white",
+                        alignSelf: "center",
+                        position: "relative",
+                        top: 20
+                    }}>
+                        Đăng nhập với
+                    </Text>
+                </View>
+                <View style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    gap: 30
+                }}>
                     <ShareButton
                         title="facebook"
                         onPress={() => { alert("alert me") }}
-                        textStyle={{ textTransform: "lowercase" }}
-                        pressStyle={{ alignSelf: "stretch" }}
+                        textStyle={{ textTransform: "uppercase" }}
                         btnStyle={{
-                            // backgroundColor: "green",
-                            justifyContent: "center"
+                            backgroundColor: "#FFF",
+                            justifyContent: "center",
+                            borderRadius: 30,
                         }}
                         icons={
-                            <AntDesign
-                                name="pluscircleo"
-                                size={32}
-                                color="black" />
+                            <FontAwesome5 name="facebook" size={24} color="black" />
                         }
                     ></ShareButton>
-                    {/* <View style={styles.btnContainer}>
-                        <View style={styles.btnContent}>
-                            <Text style={styles.btnText}>Facebook</Text>
-                        </View>
-                    </View> */}
-                    <View><Text>Google</Text></View>
+                    <ShareButton
+                        title="google"
+                        onPress={() => { alert("alert me") }}
+                        textStyle={{ textTransform: "uppercase" }}
+                        btnStyle={{
+                            backgroundColor: "#FFF",
+                            justifyContent: "center",
+                            paddingHorizontal: 20,
+                            borderRadius: 30,
+                        }}
+                        icons={
+                            <FontAwesome5 name="google" size={24} color="black" />
+                        }
+                    ></ShareButton>
+
+
                 </View>
                 <View>
-                    <Text>Đăng nhập với Email</Text>
+                    <ShareButton
+                        title="Đăng nhập với Email"
+                        onPress={() => { alert("alert me") }}
+                        textStyle={{ color: "#FFF", paddingVertical: 5 }}
+                        btnStyle={{
+                            backgroundColor: "#2c2c2c",
+                            justifyContent: "center",
+                            marginHorizontal: 50,
+                            paddingVertical: 10,
+                            borderRadius: 30,
+                        }}
+                        pressStyle={{ alignSelf: "stretch" }}
+
+                    ></ShareButton>
+
                 </View>
                 <View>
-                    <Text>Chưa có tài khoản? Đăng ký</Text>
+                    <Text style={{ textAlign: "center" }}>Chưa có tài khoản? Đăng ký</Text>
                 </View>
             </View>
-        </View>
+        </View >
     )
 }
 
