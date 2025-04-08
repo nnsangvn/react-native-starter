@@ -6,7 +6,7 @@ import fbLogo from '@/assets/auth/facebook.png';
 import ggLogo from '@/assets/auth/google.png';
 import { LinearGradient } from 'expo-linear-gradient';
 import TextBetweenLine from "@/components/button/text.between.line";
-import { Link } from "expo-router";
+import { Link, Redirect } from "expo-router";
 
 
 const styles = StyleSheet.create(
@@ -43,6 +43,11 @@ const styles = StyleSheet.create(
 )
 
 const WelcomePage = () => {
+    if (true) {
+        return (
+            <Redirect href={"/(auth)/signup"}></Redirect>
+        )
+    }
     return (
         <ImageBackground
             style={{ flex: 1 }}
@@ -134,9 +139,11 @@ const WelcomePage = () => {
                             }}>
                                 Chưa có tài khoản?
                             </Text>
-                            <Text style={{ color: "white", textDecorationLine: 'underline' }}>
-                                Đăng ký.
-                            </Text>
+                            <Link href={"/(auth)/signup"}>
+                                <Text style={{ color: "white", textDecorationLine: 'underline' }}>
+                                    Đăng ký.
+                                </Text>
+                            </Link>
 
                         </View>
                     </View>
