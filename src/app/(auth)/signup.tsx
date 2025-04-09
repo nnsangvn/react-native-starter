@@ -3,7 +3,7 @@ import SocialButton from "@/components/button/social.button"
 import ShareInput from "@/components/input/share.input"
 import { APP_COLOR } from "@/utils/constant"
 import axios from "axios"
-import { Link } from "expo-router"
+import { Link, router } from "expo-router"
 import { useEffect, useState } from "react"
 import { StyleSheet, Text, TextInput, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
@@ -18,23 +18,24 @@ const styles = StyleSheet.create({
 })
 
 const SignUpPage = () => {
-      const URL_BACKEND = process.env.EXPO_PUBLIC_API_URL
-      console.log("check url BE: ", URL_BACKEND)
-      const [name, setName] = useState<string>("sang");
+      const [name, setName] = useState<string>("");
       const [email, setEmail] = useState<string>("");
       const [password, setPassword] = useState<string>("");
 
-      useEffect(() => {
-            const fetchAPI = async () => {
-                  try {
-                        const res = await axios.get(URL_BACKEND!)
-                        console.log("Check res", res.data)
-                  } catch (error) {
-                        console.log("check error:", error)
+
+
+      const handleSignUp = async () => {
+            const url = `${process.env.EXPO_PUBLIC_API_URL}/api/v1/auth/register`
+            try {
+                  const res = await axios.post(url, { email, password, name })
+                  if (res.data) {
+                        router.navigate("/(auth)/verify")
                   }
+                  console.log("Check res", res.data)
+            } catch (error) {
+                  console.log("Check error:", error)
             }
-            fetchAPI()
-      }, []);
+      }
       return (
 
             <SafeAreaView style={{ flex: 1 }}>
@@ -67,7 +68,7 @@ const SignUpPage = () => {
                         <View style={{ marginVertical: 10 }}></View>
                         <ShareButton
                               title="Đăng ký"
-                              onPress={() => { console.log(name, email, password) }}
+                              onPress={handleSignUp}
                               textStyle={{
                                     textTransform: "uppercase",
                                     color: "#FFF",
