@@ -54,6 +54,7 @@ const ShareInput = (props: IProps) => {
                               style={[styles.input, { borderColor: isFocus ? APP_COLOR.ORANGE : APP_COLOR.GREY }]}
                               keyboardType={keyboardType}
                               secureTextEntry={secureTextEntry && !isShowPassword}
+                              autoCapitalize="none"
                         />
                         {secureTextEntry &&
                               < FontAwesome5
