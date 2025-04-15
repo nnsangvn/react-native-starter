@@ -27,11 +27,15 @@ const SignUpPage = () => {
       const handleSignUp = async () => {
 
             try {
+
                   const res = await registerAPI(email, password, name)
                   if (res.data) {
                         router.navigate("/(auth)/verify")
                   }
-                  console.log("Check res", res.data)
+                  else {
+                        alert(res.message)
+                  }
+
             } catch (error) {
                   console.log("Check error:", error)
             }
