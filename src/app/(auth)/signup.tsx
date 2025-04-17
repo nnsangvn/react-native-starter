@@ -8,6 +8,8 @@ import { Link, router } from "expo-router"
 import { useEffect, useState } from "react"
 import { StyleSheet, Text, TextInput, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
+import Toast from 'react-native-root-toast';
+
 
 const styles = StyleSheet.create({
       container: {
@@ -33,7 +35,14 @@ const SignUpPage = () => {
                         router.navigate("/(auth)/verify")
                   }
                   else {
-                        alert(res.message)
+                        let m = Array.isArray(res.message)
+                              ? res.message[0] : res.message
+                        Toast.show(m, {
+                              duration: Toast.durations.LONG,
+                              textColor: "white",
+                              backgroundColor: APP_COLOR.ORANGE,
+                              opacity: 1
+                        });
                   }
 
             } catch (error) {
