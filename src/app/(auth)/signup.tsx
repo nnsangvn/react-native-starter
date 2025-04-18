@@ -32,7 +32,10 @@ const SignUpPage = () => {
 
                   const res = await registerAPI(email, password, name)
                   if (res.data) {
-                        router.navigate("/(auth)/verify")
+                        router.navigate({
+                              pathname: "/(auth)/verify",
+                              params: { email: email }
+                        })
                   }
                   else {
                         let m = Array.isArray(res.message)
